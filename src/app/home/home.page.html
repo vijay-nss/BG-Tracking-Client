@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- GPS Tracking Buttons -->
+  <ion-button expand="fullscreen" (click)="askToTurnOnGPS()">Start Tracking</ion-button><br>
+  <ion-button expand="fullscreen" (click)="stopTracking()">Stop Tracking</ion-button><br>
+
+  <!-- Display Address from Geolocation -->
+  <ion-label style="margin: 5px; color: red;" *ngIf="fullAddress">
+    <strong>Address: </strong>{{ fullAddress }}
+  </ion-label><br>
+
+ <!-- Registration and Face Verification -->
+ <ion-button expand="fullscreen" (click)="captureAndRegisterFace()">Register Face</ion-button><br><br>
+ <ion-button expand="fullscreen" (click)="silentCaptureAndVerify()">Verify Face</ion-button><br><br>
+
+
+ <ion-button expand="fullscreen"> version : {{appVersion}}</ion-button><br>
+
+ <!-- Display Captured Image -->
+ <div *ngIf="imageUrl">
+   <img [src]="imageUrl" alt="Captured Face" style="max-width: 100%; height: auto; margin-top: 20px;">
+ </div>
+
+ <!-- Display Detected Face ID if a match is found -->
+ <div *ngIf="detectedFaceId">
+   <p><strong>Detected Face ID:</strong> {{ detectedFaceId }}</p>
+ </div>
+ 
+</ion-content>
